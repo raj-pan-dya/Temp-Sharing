@@ -1,0 +1,8 @@
+ IEnumerable<Product> prods = pBl.SelectAllBL();
+
+                txtTotalCount.Text = prods.Count().ToString();
+                var res = from s in prods select s.Id;
+                txtMaxId.Text = res.Max().ToString();
+                txtProductGrid.ItemsSource = prods;
+                ComboName.ItemsSource = prods;
+                ComboName.DisplayMemberPath = "ProdName";

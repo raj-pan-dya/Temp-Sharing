@@ -1,0 +1,20 @@
+private void BtnReset_Click(object sender, RoutedEventArgs e)
+        {
+            cmdName.Text = string.Empty;
+            txtPrice.Text = string.Empty;
+            dpDOB.Text = string.Empty;
+            PopulateUI();
+        }
+        
+
+        private void BtnDisplay_Click(object sender, RoutedEventArgs e)
+        {
+            List<Product> prods = dbContext.Products.ToList(); //using LINQ
+            //var res = prods.Where(s => s.Price > 4000);
+            //var res = prods.Where(s => s.Name.StartsWith("P"));
+            //var res = prods.Where(s => s.Price < 4000 & s.Price >1000);
+            var res = prods.Where(s => s.ExpDate.Value.Year >= (DateTime.Now.Year + 2));
+            dgProd.ItemsSource = res;
+            cmdName.ItemsSource = res;
+            cmdName.DisplayMemberPath = "Name";
+        }
