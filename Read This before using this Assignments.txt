@@ -1,0 +1,1 @@
+Copy packages folder in each lab where solution is present
